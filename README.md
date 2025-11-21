@@ -1,4 +1,4 @@
-
+## Para garantizar la seguridad del proyecto y la protección de información sensible, la versión de esta API publicada en GitHub ha sido simplificada
 ## Tecnologías usadas
 
 ![Python](https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=white)
