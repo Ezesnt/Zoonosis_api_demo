@@ -1,0 +1,13 @@
+# Entorno virtual local y caché
+venv/
+__pycache__/
+*.pyc
+
+# Archivos y carpetas de Docker y Git
+.dockerignore
+Dockerfile
+docker-compose.yml
+.git/
+
+# Archivo de secretos
+.env

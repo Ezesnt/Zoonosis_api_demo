@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Reporte {{ periodo }} - {{ nombre_sistema }}</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    
+    @page {
+        size: A4;
+        margin: 0;
+    }
+
+    body { 
+      margin: 0; 
+      font-family: 'Poppins', sans-serif; 
+      background-color: #12121C; 
+      color: #BBBBBB; 
+      -webkit-print-color-adjust: exact; 
+    }
+    
+    .container { 
+      width: 100%;
+      box-sizing: border-box;
+      margin: 0;
+      background: #181820; 
+      padding: 35px;
+    }
+    
+    .header { 
+      border-bottom: 1px solid #2A2A40; 
+      padding-bottom: 20px; 
+      margin-bottom: 30px; 
+    }
+    
+    .header-table { width: 100%; }
+    .logo { width: 50px; height: 50px; }
+    .titulo { font-size: 2em; font-weight: 700; color: #FFFFFF; }
+    .header-meta { text-align: right; font-size: 0.9em; vertical-align: middle; line-height: 1.5; }
+    
+    h2 { 
+      color: #FFFFFF; 
+      margin-top: 40px; 
+      margin-bottom: 20px; 
+      font-size: 1.5em; 
+      font-weight: 600; 
+      border-bottom: 2px solid #00f2fe; 
+      padding-bottom: 10px; 
+      display: inline-block; 
+    }
+    
+    .cards-table { 
+      width: 100%; 
+      border-spacing: 20px;
+    }
+    
+    .card { 
+      background: #1E1E2E; 
+      border-radius: 10px; 
+      padding: 20px; 
+      border: 1px solid #2A2A40; 
+      text-align: left; 
+      vertical-align: top; 
+      width: 25%; 
+    }
+    
+    .card-title { 
+      color: #8899a6; 
+      font-size: 0.9em; 
+      font-weight: 600; 
+      margin-bottom: 10px; 
+      text-transform: uppercase; 
+    }
+    
+    .card-value { 
+      font-size: 2.2em; 
+      font-weight: 700; 
+      color: #FFFFFF; 
+    }
+
+    /* --- CAMBIOS CLAVE PARA EL LAYOUT DE GRÁFICOS --- */
+    .charts-container {
+      margin-top: 20px;
+    }
+    
+    .grafico { 
+      background: #1E1E2E; 
+      border-radius: 12px; 
+      padding: 25px; 
+      border: 1px solid #2A2A40; 
+      text-align: center;
+      margin-bottom: 30px; /* Espacio vertical entre cada gráfico */
+      page-break-inside: avoid; /* Le dice a WeasyPrint que no corte este bloque */
+    }
+    /* --- FIN DE CAMBIOS CLAVE --- */
+    
+    .grafico img { 
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px; 
+    }
+
+    .grafico-total {
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #2A2A40;
+        font-size: 1.1em;
+        font-weight: 600;
+        color: #BBBBBB;
+    }
+    .grafico-total span {
+        color: #FFFFFF;
+        font-size: 1.2em;
+    }
+    
+    footer { 
+      margin-top: 20px; 
+      padding-top: 20px; 
+      text-align: center; 
+      font-size: 0.8em; 
+      color: #657786; 
+      border-top: 1px solid #2A2A40; 
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <table class="header-table">
+        <tr>
+          <td style="width: 60px;"><img src="{{ logo_url }}" class="logo" alt="Logo" /></td>
+          <td><h1 class="titulo">{{ nombre_sistema }}</h1></td>
+          <td class="header-meta">
+            <div style="font-weight: 600; color: #FFFFFF;">Reporte de Actividades</div>
+            <div>Período: {{ periodo }}</div>
+            <div>Generado: {{ fecha_generacion }}</div>
+          </td>
+        </tr>
+      </table>
+    </header>
+
+    <h2>Resumen General</h2>
+    <table class="cards-table">
+        <tr>
+            <td class="card"><div class="card-title">Animales (Total)</div><div class="card-value">{{ total_animales }}</div></td>
+            <td class="card"><div class="card-title">Nuevos Animales</div><div class="card-value">{{ animales_periodo }}</div></td>
+            <td class="card"><div class="card-title">Animales de Baja</div><div class="card-value">{{ animales_baja }}</div></td>
+            <td class="card"><div class="card-title">Animales Castrados</div><div class="card-value">{{ castrados }}</div></td>
+        </tr>
+        <tr>
+            <td class="card"><div class="card-title">Usuarios Activos</div><div class="card-value">{{ usuarios_activos }}</div></td>
+            <td class="card"><div class="card-title">Nuevos Usuarios</div><div class="card-value">{{ usuarios_nuevos }}</div></td>
+            <td class="card"><div class="card-title">Patentes Vigentes</div><div class="card-value">{{ patente_vigente }}</div></td>
+            <td class="card"><div class="card-title">Noticias Publicadas</div><div class="card-value">{{ noticias_publicadas }}</div></td>
+        </tr>
+        <tr>
+            <td class="card"><div class="card-title">Denuncias Recibidas</div><div class="card-value">{{ denuncias_recibidas }}</div></td>
+            <td class="card"><div class="card-title">Denuncias Resueltas</div><div class="card-value">{{ denuncias_resueltas }}</div></td>
+            <td class="card"><div class="card-title">Turnos Programados</div><div class="card-value">{{ turnos_programados }}</div></td>
+            <td class="card"><div class="card-title">Turnos Realizados</div><div class="card-value">{{ turnos_realizados }}</div></td>
+        </tr>
+         <tr>
+            <td class="card"><div class="card-title">Adopciones Exitosas</div><div class="card-value">{{ adopciones_realizadas }}</div></td>
+            <td class="card"><div class="card-title">En Adopción Ahora</div><div class="card-value">{{ animales_en_adopcion }}</div></td>
+            <td class="card" colspan="2" style="background: none; border: none;"></td>
+        </tr>
+    </table>
+    
+    <h2>Análisis Gráfico</h2>
+   
+    <section class="charts-container">
+        <div class="grafico">
+            <img src="data:image/png;base64,{{ grafico_especies }}" alt="Gráfico Especies" />
+            <div class="grafico-total">Total de Animales Registrados: <span>{{ total_animales }}</span></div>
+        </div>
+        <div class="grafico">
+            <img src="data:image/png;base64,{{ grafico_patentes }}" alt="Gráfico Patentes" />
+            <div class="grafico-total">Estado de Patentes sobre un Total de: <span>{{ total_animales }}</span> animales</div>
+        </div>
+        <div class="grafico">
+            <img src="data:image/png;base64,{{ grafico_castrados }}" alt="Gráfico Castrados" />
+            <div class="grafico-total">Estado de Castraciones sobre un Total de: <span>{{ total_animales }}</span> animales</div>
+        </div>
+        <div class="grafico">
+            <img src="data:image/png;base64,{{ grafico_turnos }}" alt="Gráfico Turnos" />
+            <div class="grafico-total">Total de Turnos en el Período: <span>{{ total_turnos_periodo }}</span></div>
+        </div>
+        <div class="grafico">
+            <img src="data:image/png;base64,{{ grafico_denuncias }}" alt="Gráfico Denuncias" />
+            <div class="grafico-total">Total de Denuncias en el Período: <span>{{ total_denuncias_periodo }}</span></div>
+        </div>
+        <div class="grafico">
+            <img src="data:image/png;base64,{{ grafico_barrios }}" alt="Gráfico Barrios" />
+            <div class="grafico-total">Mostrando el Top 5 de Barrios</div>
+        </div>
+    </section>
+    
+    <footer>Reporte generado automáticamente por el sistema de Sanidad Animal Bariloche.</footer>
+  </div>
+</body>
+</html>
