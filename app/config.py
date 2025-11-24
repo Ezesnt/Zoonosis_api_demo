@@ -11,7 +11,7 @@ class Config:
     SECRET_KEY = os.getenv('FLASK_SECRET_KEY', '11111')  
     
     # Database (PostgreSQL)
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://postgres:1111@localhost:5432/zoonosis_base')
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'postgresql://postgres:1111@localhost:5432/basenombrefalso')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     # JWT (Autenticación)
