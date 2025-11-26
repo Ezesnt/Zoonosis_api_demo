@@ -248,6 +248,17 @@ Si te interesa la arquitectura, el flujo de trabajo o querés colaborar, ¡estoy
 
 * [https://sanidadanimalbariloche.com/](https://sanidadanimalbariloche.com/)
 
+### 🌐 Dominio demo 
+* [https://zoonosis-api-front-demo.vercel.app/)
+  
+* Cliente
+Email: prueba@gmail.com
+Pass: Prueba1234?
+
+Admin
+Email: admin@gmail.com
+Pass: Prueba1234?
+
 ## 🔟 Créditos / Autor
 
 * **Desarrollado por:** Ezequiel Santillán
